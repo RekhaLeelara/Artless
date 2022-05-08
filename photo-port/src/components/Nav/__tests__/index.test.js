@@ -10,6 +10,8 @@ const categories = [
   ]
   const mockCurrentCategory = jest.fn();
   const mockSetCurrentCategory = jest.fn();
+  const mockContactSelected = jest.fn();
+  const mockSetContactSelected = jest.fn();
 
 describe('emoji is visible', () => {
     it('inserts emoji into the h2', () => {
@@ -20,20 +22,19 @@ describe('emoji is visible', () => {
     });
 });
 
-describe('Nav component', () => {
+describe('Nav component renders', () => {
     // baseline test
     it('renders', () => {
         render(<Nav />);
-    });
-
+      });
 
     // snapshot test
     it('matches snapshot', () => {
         const { asFragment } = render(<Nav />);
-        // assert value comparison
-        expect(asFragment()).toMatchSnapshot();
-    });
+        expect(asFragment()).toMatchSnapshot();});
+
 })
+
 
 describe('links are visible', () => {
     it('inserts text into the links', () => {
@@ -48,5 +49,7 @@ describe('links are visible', () => {
       categories={categories}
       setCurrentCategory={mockSetCurrentCategory}
       currentCategory={mockCurrentCategory}
+      contactSelected={mockContactSelected}
+      setContactSelected={mockSetContactSelected}
     />);
   })
